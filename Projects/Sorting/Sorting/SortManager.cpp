@@ -89,6 +89,30 @@ void CSortManager::SelectionSort(std::string inputfilepath)
 	m_sortingTime.push_back(p);
 }
 
+void CSortManager::HeapSort(std::string inputfilepath)
+{
+	CHeapSort heapsort(100000);
+	heapsort.FileToSort(inputfilepath);
+	heapsort.Parse();
+
+	std::clock_t start;
+	double duration;
+
+	start = std::clock();
+
+	heapsort.Sort();
+
+	duration = (std::clock() - start) / (double)CLOCKS_PER_SEC;
+
+	std::string outfilepath = "C:\\karthik\\sortedlist_heapsort.txt";
+	heapsort.WriteSortedListToFile(outfilepath);
+
+	std::pair<std::string, double> p;
+	p.first = "Heap Sort";
+	p.second = duration;
+	m_sortingTime.push_back(p);
+}
+
 void CSortManager::printTimings()
 	{
 		std::cout << "Algorithm" << "\t" << "Time" << "\n";

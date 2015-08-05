@@ -27,17 +27,20 @@ void CInsertion::Sort()
 	if (listofnumbers.size() > 0)
 	{
 		int num = listofnumbers.size();
-		for (int i = 0; i < num; i++)
+		int insertedElement, i, j;
+		for (i = 1; i < num; i++)
 		{
-			for (int j = i + 1; j > 0 && (j < num ); j--)
+			insertedElement = listofnumbers[i];
+			j = i-1;
+			if (j == num) break;
+			while ((j >= 0) && (listofnumbers[j] > insertedElement))
 			{
-				if (listofnumbers[j - 1] > listofnumbers[j])
-				{
-					std::swap(listofnumbers[j], listofnumbers[j - 1]);
-
-				}
+				//keep on moving the element until we find the correct position for that element.
+				listofnumbers[j+1] = listofnumbers[j]; 
+				j = j - 1;
 			}
-			
+			listofnumbers[j+1] = insertedElement;
+
 		}
 	}
 	else

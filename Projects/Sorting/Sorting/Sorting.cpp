@@ -14,8 +14,9 @@ int _tmain(int argc, _TCHAR* argv[])
 	CSortManager manager;
 	std::string input = dataset.ReadFile();
 	//manager.BubbleSort(input);
-	//manager.InsertionSort(input);
+	manager.InsertionSort(input);
 	manager.SelectionSort(input);
+	manager.HeapSort(input);
 	manager.printTimings();
 
 	return 0;

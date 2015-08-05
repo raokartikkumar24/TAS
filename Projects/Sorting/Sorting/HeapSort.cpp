@@ -1,6 +1,8 @@
 #include "stdafx.h"
 #include "HeapSort.h"
-
+#include <iostream>
+#include <fstream>
+#include <algorithm>
 
 
 CHeapSort::CHeapSort()
@@ -18,9 +20,14 @@ CHeapSort::CHeapSort(int N)
 
 CHeapSort::~CHeapSort()
 {
-	delete[] m_pElement;
+	//delete[] m_pElement;
 }
 
+
+void CHeapSort::FileToSort(std::string filepath)
+{
+	m_sFileToSort = filepath;
+}
 
 void CHeapSort::swim(int k)
 {
@@ -60,36 +67,38 @@ void CHeapSort::deleteMAX()
 
 void CHeapSort::Sort()
 {
+	std::cout << "Enter CHeapSort::Sort() \n";
 	for (int i = 1; i < m_nNumberOfElements; ++i)
 		deleteMAX();
+	std::cout << "Enter CHeapSort::Sort() \n";
 }
 
 void CHeapSort::Parse()
 {
-	std::cout << "Enter CSelectionSort::Parse() \n";
+	std::cout << "Enter CHeapSort::Parse() \n";
 	std::ifstream input_file;
 	input_file.open(m_sFileToSort);
-
+	int i = 0;
 	while (!input_file.eof())
 	{
 		std::string s;
 		std::getline(input_file, s);
+		
 		int x = atoi(s.c_str());
-		listofnumbers.push_back(x);
-
+		insert(x);
 	}
 	input_file.close();
-	std::cout << "Leave CSelectionSort::Parse() \n";
+	std::cout << "Leave CHeapSort::Parse() \n";
 }
 
 void CHeapSort::WriteSortedListToFile(std::string filepath)
 {
-	std::cout << "Enter CSelectionSort::WriteSortedListToFile \n";
+	std::cout << "Enter CHeapSort::WriteSortedListToFile \n";
 	std::ofstream sorted(filepath);
 
-	for (int i = 0; i < (int)listofnumbers.size(); ++i)
+	for (int i = 1; i < m_nNumberOfElements+1; ++i)
 	{
-		sorted << listofnumbers[i] << std::endl;
+		sorted << m_pElement[i] << std::endl;
 	}
-	std::cout << "Leave CSelectionSort::WriteSortedListToFile \n";
+	std::cout << "Leave CHeapSort::WriteSortedListToFile \n";
 }

@@ -5,6 +5,7 @@
 #include "BubbleSort.h"
 #include "Insertion.h"
 #include "SelectionSort.h"
+#include "HeapSort.h"
 #include <cstdio>
 #include <ctime>
 class CSortManager
@@ -15,6 +16,7 @@ public:
 	void BubbleSort(std::string inputfilepath);
 	void InsertionSort(std::string inputfilepath);
 	void SelectionSort(std::string inputfilepath);
+	void HeapSort(std::string inputfilepath);
 	void printTimings();
 
 private:
