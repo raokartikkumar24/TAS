@@ -6,6 +6,8 @@
 #include "Insertion.h"
 #include "SelectionSort.h"
 #include "HeapSort.h"
+#include "QuickSort.h"
+#include "MergeSort.h"
 #include <cstdio>
 #include <ctime>
 class CSortManager
@@ -17,6 +19,8 @@ public:
 	void InsertionSort(std::string inputfilepath);
 	void SelectionSort(std::string inputfilepath);
 	void HeapSort(std::string inputfilepath);
+	void QuickSort(std::string inputfilepath);
+	void MergeSort(std::string inputfilepath);
 	void printTimings();
 
 private:

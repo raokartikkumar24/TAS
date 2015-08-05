@@ -1,7 +1,6 @@
 #include "stdafx.h"
 #include "SortManager.h"
 
-
 CSortManager::CSortManager()
 {
 }
@@ -91,7 +90,7 @@ void CSortManager::SelectionSort(std::string inputfilepath)
 
 void CSortManager::HeapSort(std::string inputfilepath)
 {
-	CHeapSort heapsort(100000);
+	CHeapSort heapsort(1000000);
 	heapsort.FileToSort(inputfilepath);
 	heapsort.Parse();
 
@@ -112,6 +111,59 @@ void CSortManager::HeapSort(std::string inputfilepath)
 	p.second = duration;
 	m_sortingTime.push_back(p);
 }
+
+void CSortManager::QuickSort(std::string inputfilepath)
+{
+
+	CQuickSort quicksort;
+	quicksort.FileToSort(inputfilepath);
+	quicksort.Parse();
+
+	std::clock_t start;
+	double duration;
+
+	start = std::clock();
+
+	quicksort.Sort();
+
+	duration = (std::clock() - start) / (double)CLOCKS_PER_SEC;
+
+	std::string outfilepath = "C:\\karthik\\sortedlist_quicksort.txt";
+	quicksort.WriteSortedListToFile(outfilepath);
+
+	std::pair<std::string, double> p;
+	p.first = "Quick Sort";
+	p.second = duration;
+	m_sortingTime.push_back(p);
+}
+
+void CSortManager::MergeSort(std::string inputfilepath)
+{
+
+	CMergeSort mergesort;
+	mergesort.FileToSort(inputfilepath);
+	mergesort.Parse();
+
+	std::clock_t start;
+	double duration;
+
+	start = std::clock();
+
+	mergesort.Sort();
+
+	duration = (std::clock() - start) / (double)CLOCKS_PER_SEC;
+
+	std::string outfilepath = "C:\\karthik\\sortedlist_mergesort.txt";
+	mergesort.WriteSortedListToFile(outfilepath);
+
+	std::pair<std::string, double> p;
+	p.first = "Merge Sort";
+	p.second = duration;
+	m_sortingTime.push_back(p);
+
+
+}
+
 
 void CSortManager::printTimings()
 	{
