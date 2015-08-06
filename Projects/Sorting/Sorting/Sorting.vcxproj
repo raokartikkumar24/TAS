@@ -56,6 +56,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -83,16 +84,21 @@
     <ClInclude Include="DataSet.h" />
     <ClInclude Include="HeapSort.h" />
     <ClInclude Include="Insertion.h" />
+    <ClInclude Include="MergeSort.h" />
+    <ClInclude Include="QuickSort.h" />
     <ClInclude Include="SelectionSort.h" />
     <ClInclude Include="SortManager.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
+    <ClInclude Include="WebServer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BubbleSort.cpp" />
     <ClCompile Include="DataSet.cpp" />
     <ClCompile Include="HeapSort.cpp" />
     <ClCompile Include="Insertion.cpp" />
+    <ClCompile Include="MergeSort.cpp" />
+    <ClCompile Include="QuickSort.cpp" />
     <ClCompile Include="SelectionSort.cpp" />
     <ClCompile Include="Sorting.cpp" />
     <ClCompile Include="SortManager.cpp" />
@@ -100,6 +106,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="WebServer.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

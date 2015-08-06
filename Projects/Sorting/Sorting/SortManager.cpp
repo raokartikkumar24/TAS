@@ -90,7 +90,7 @@ void CSortManager::SelectionSort(std::string inputfilepath)
 
 void CSortManager::HeapSort(std::string inputfilepath)
 {
-	CHeapSort heapsort(1000000);
+	CHeapSort heapsort(10000000);
 	heapsort.FileToSort(inputfilepath);
 	heapsort.Parse();
 

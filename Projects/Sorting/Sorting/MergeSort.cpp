@@ -24,11 +24,13 @@ void CMergeSort::FileToSort(std::string filepath)
 
 void CMergeSort::Merge(std::vector<int> &mainarray, std::vector<int> &aux, int lo, int mid, int hi)
 {
+	for (int k = lo; k <= hi; k++)
+		aux[k] = mainarray[k];
+
 	int i = lo, j = mid + 1;
 	int len = mainarray.size();
 
-	for (int k = 0; k < len; k++)
-		aux[k] = mainarray[k];
+	
 
 	for (int p = lo; p <= hi; p++)
 	{
