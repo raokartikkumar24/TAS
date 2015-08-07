@@ -13,6 +13,7 @@ CClient::~CClient()
 
 void CClient::TalkToServer()
 {
+	std::cout << "Stared client... \n";
 	WSADATA ws;
 	int nret;
 
@@ -38,23 +39,21 @@ void CClient::TalkToServer()
 		WSACleanup();
 	}
 
-	char sendbuffer[25];
-	char recvbuffer[25];
+	char sendbuffer[30] = "Provide Sorting timings";
+	char recvbuffer[52];
 
-	do
-	{
-		std::cin >> sendbuffer;
-
-		nret = send(commsocket, sendbuffer, strlen(sendbuffer), 0);
+	std::cout << sendbuffer << std::endl;
+	nret = send(commsocket, sendbuffer, strlen(sendbuffer), 0);
 
 		if (nret == SOCKET_ERROR)
 		{
+			if ( nret = WSAETIMEDOUT )
 			std::cout << "Could not send bytes to the server \n";
 			WSACleanup();
 		}
 
 
-		nret = recv(commsocket, recvbuffer, 25, 0);
+		nret = recv(commsocket, recvbuffer, strlen(recvbuffer), 0);
 		if (nret == SOCKET_ERROR)
 		{
 			std::cout << "Could not connect to the server \n";
@@ -66,9 +65,9 @@ void CClient::TalkToServer()
 		}
 		else
 		{
-			std::cout << "Received : " << recvbuffer << "from the server \n";
+			std::cout << "\n Received : " << recvbuffer << "from the server \n";
 		}
-	} while (nret > 0);
+	
 	closesocket(commsocket);
 	WSACleanup();
 }
