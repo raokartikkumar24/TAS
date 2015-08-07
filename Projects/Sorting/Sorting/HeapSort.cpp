@@ -10,10 +10,10 @@ CHeapSort::CHeapSort()
 }
 
 
-CHeapSort::CHeapSort(int N)
+CHeapSort::CHeapSort(__int64 N)
 {
-	m_nNumberOfElements = N;
-	m_pElement = new int[N + 1];
+	m_nNumberOfElements = N+1;
+	m_pElement = new __int64[N + 2];
 	m_nindex = 0;
 
 }
@@ -29,7 +29,7 @@ void CHeapSort::FileToSort(std::string filepath)
 	m_sFileToSort = filepath;
 }
 
-void CHeapSort::swim(int k)
+void CHeapSort::swim(__int64 k)
 {
 	while (k > 1 && m_pElement[k / 2] < m_pElement[k])
 	{
@@ -38,18 +38,17 @@ void CHeapSort::swim(int k)
 	}
 }
 
-void CHeapSort::insert(int value)
+void CHeapSort::insert(__int64 value)
 {
 	m_pElement[++m_nindex] = value;
 	swim(m_nindex);
 }
 
-void CHeapSort::sink(int k)
+void CHeapSort::sink(__int64 k)
 {
-	
 	while (2 * k <= m_nindex)
 	{
-		int j = 2 * k;
+		__int64 j = 2 * k;
 		if (j < m_nindex && m_pElement[j] < m_pElement[j + 1])
 			j++;
 		if (m_pElement[k]>m_pElement[j])break;
@@ -67,18 +66,17 @@ void CHeapSort::deleteMAX()
 
 void CHeapSort::Sort()
 {
-	std::cout << "Enter CHeapSort::Sort() \n";
-	for (int i = 1; i < m_nNumberOfElements; ++i)
+	CLogger::Log(__LINE__, __FILE__, "Enter Sort()  ");
+	for (__int64 i = 1; i < m_nNumberOfElements; ++i)
 		deleteMAX();
-	std::cout << "Enter CHeapSort::Sort() \n";
+	CLogger::Log(__LINE__, __FILE__, "Leave Sort() ");
 }
 
 void CHeapSort::Parse()
 {
-	std::cout << "Enter CHeapSort::Parse() \n";
+	CLogger::Log(__LINE__, __FILE__, "Enter Parse() ");
 	std::ifstream input_file;
 	input_file.open(m_sFileToSort);
-	int i = 0;
 	while (!input_file.eof())
 	{
 		std::string s;
@@ -88,17 +86,17 @@ void CHeapSort::Parse()
 		insert(x);
 	}
 	input_file.close();
-	std::cout << "Leave CHeapSort::Parse() \n";
+	CLogger::Log(__LINE__, __FILE__, "Leave Parse() ");
 }
 
 void CHeapSort::WriteSortedListToFile(std::string filepath)
 {
-	std::cout << "Enter CHeapSort::WriteSortedListToFile \n";
+	CLogger::Log(__LINE__, __FILE__, "Enter WriteSortedListToFile() ");
 	std::ofstream sorted(filepath);
 
-	for (int i = 1; i < m_nNumberOfElements+1; ++i)
+	for (__int64 i = 1; i < m_nNumberOfElements+1; ++i)
 	{
 		sorted << m_pElement[i] << std::endl;
 	}
-	std::cout << "Leave CHeapSort::WriteSortedListToFile \n";
+	CLogger::Log(__LINE__, __FILE__, "Leave WriteSortedListToFile() ");
 }

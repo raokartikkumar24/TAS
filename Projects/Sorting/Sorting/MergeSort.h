@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
 #include <vector>
+#include "Logger.h"
 class CMergeSort
 {
 private:

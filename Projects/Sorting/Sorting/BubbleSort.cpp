@@ -21,8 +21,7 @@ void CBubbleSort::FileToSort(std::string filepath)
 
 void CBubbleSort::Sort()
 {
-	std::cout << "Enter CBubbleSort::Sort() \n";
-
+	CLogger::Log(__LINE__, __FILE__, "Enter Sort()");
 	if (listofnumbers.size() > 0)
 	{
 		int num = listofnumbers.size();
@@ -37,13 +36,13 @@ void CBubbleSort::Sort()
 		}
 	}
 
-	std::cout << "Leave CBubbleSort::Sort() \n";
+	CLogger::Log(__LINE__, __FILE__, "Leave Sort()");
 
 }
 
 void CBubbleSort::Parse()
 {
-	std::cout << "Enter CBubbleSort::Parse() \n";
+	CLogger::Log(__LINE__, __FILE__, "Enter Parse()");
 	std::ifstream input_file;
 	input_file.open(m_sFileToSort);
 
@@ -56,17 +55,17 @@ void CBubbleSort::Parse()
 
 	}
 	input_file.close();
-	std::cout << "Leave CBubbleSort::Parse() \n";
+	CLogger::Log(__LINE__, __FILE__, "Leave Parse()");
 }
 
 void CBubbleSort::WriteSortedListToFile(std::string filepath)
 {
-	std::cout << "Enter CBubbleSort::WriteSortedListToFile \n";
+	CLogger::Log(__LINE__, __FILE__, "Enter WriteSortedListToFile()");
 	std::ofstream sorted(filepath);
 
 	for (int i = 0; i < (int)listofnumbers.size(); ++i)
 	{
 		sorted << listofnumbers[i] << std::endl;
 	}
-	std::cout << "Leave CBubbleSort::WriteSortedListToFile \n";
+	CLogger::Log(__LINE__, __FILE__, "Leave WriteSortedListToFile()");
 }

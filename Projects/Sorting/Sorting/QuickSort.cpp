@@ -43,11 +43,11 @@ int CQuickSort::Partition(int l, int r)
 
 void CQuickSort::Sort()
 {
-	std::cout << "Enter CQuickSort::Sort() \n";
+	CLogger::Log(__LINE__, __FILE__, "Enter Sort()");
 
 	Sort(0, listofnumbers.size() - 1);
 	
-	std::cout << "Leave CQuickSort::Sort() \n";
+	CLogger::Log(__LINE__, __FILE__, "Leave Sort()");
 
 }
 
@@ -63,7 +63,7 @@ void CQuickSort::Sort(int l, int r)
 
 void CQuickSort::Parse()
 {
-	std::cout << "Enter CQuickSort::Parse() \n";
+	CLogger::Log(__LINE__, __FILE__, "Enter Parse()");
 	std::ifstream input_file;
 	input_file.open(m_sFileToSort);
 
@@ -76,18 +76,19 @@ void CQuickSort::Parse()
 
 	}
 	input_file.close();
-	std::cout << "Leave CQuickSort::Parse() \n";
+	
+	CLogger::Log(__LINE__, __FILE__, "Leave Parse()");
 }
 
 void CQuickSort::WriteSortedListToFile(std::string filepath)
 {
-	std::cout << "Enter CQuickSort::WriteSortedListToFile \n";
+	CLogger::Log(__LINE__, __FILE__, "Enter WriteSortedListToFile()");
 	std::ofstream sorted(filepath);
 
 	for (int i = 0; i < (int)listofnumbers.size(); ++i)
 	{
 		sorted << listofnumbers[i] << std::endl;
 	}
-	std::cout << "Leave CQuickSort::WriteSortedListToFile \n";
+	CLogger::Log(__LINE__, __FILE__, "Leave WriteSortedListToFile()");
 }
 

@@ -1,5 +1,6 @@
 #pragma once
 #include <vector>
+#include "Logger.h"
 class CBubbleSort
 {
 private:

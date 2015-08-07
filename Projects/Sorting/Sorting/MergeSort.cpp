@@ -44,7 +44,7 @@ void CMergeSort::Merge(std::vector<int> &mainarray, std::vector<int> &aux, int l
 
 void CMergeSort::Sort()
 {
-	std::cout << "Enter CMergeSort::Sort() \n";
+	CLogger::Log(__LINE__, __FILE__, "Enter Sort()");
 
 	std::vector<int> auxilary(listofnumbers.size());
 	std::vector<int> another(listofnumbers.size());
@@ -54,7 +54,7 @@ void CMergeSort::Sort()
 	listofnumbers = another;
 
 
-	std::cout << "Leave CMergeSort::Sort() \n";
+	CLogger::Log(__LINE__, __FILE__, "Leave Sort()");
 
 }
 
@@ -72,7 +72,7 @@ void CMergeSort::Sort(std::vector<int> &mainarray, std::vector<int> &aux, int lo
 
 void CMergeSort::Parse()
 {
-	std::cout << "Enter CMergeSort::Parse() \n";
+	CLogger::Log(__LINE__, __FILE__, "Enter Parse()");
 	std::ifstream input_file;
 	input_file.open(m_sFileToSort);
 
@@ -85,20 +85,19 @@ void CMergeSort::Parse()
 
 	}
 	input_file.close();
-	std::cout << "Leave CMergeSort::Parse() \n";
+	CLogger::Log(__LINE__, __FILE__, "Leave Parse()");
 }
 
 void CMergeSort::WriteSortedListToFile(std::string filepath)
 {
 
-
-	std::cout << "Enter CMergeSort::WriteSortedListToFile \n";
+	CLogger::Log(__LINE__, __FILE__, "Enter WriteSortedListToFile()");
 	std::ofstream sorted(filepath);
 
 	for (int i = 0; i < (int)listofnumbers.size(); ++i)
 	{
 		sorted << listofnumbers[i] << std::endl;
 	}
-	std::cout << "Leave CMergeSort::WriteSortedListToFile \n";
+	CLogger::Log(__LINE__, __FILE__, "Leave WriteSortedListToFile()");
 }
 

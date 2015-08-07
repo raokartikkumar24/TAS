@@ -22,8 +22,7 @@ void CInsertion::FileToSort(std::string filepath)
 
 void CInsertion::Sort()
 {
-	std::cout << "Enter CInsertion::Sort() \n";
-
+	CLogger::Log(__LINE__, __FILE__, "Enter Sort()");
 	if (listofnumbers.size() > 0)
 	{
 		int num = listofnumbers.size();
@@ -45,15 +44,15 @@ void CInsertion::Sort()
 	}
 	else
 	{
-		std::cout << "Error : List is empty \n";
+		CLogger::Log(__LINE__, __FILE__, "Error . The List is empty");
 	}
-	std::cout << "Leave CInsertion::Sort() \n";
+	CLogger::Log(__LINE__, __FILE__, "Leave Sort()");
 
 }
 
 void CInsertion::Parse()
 {
-	std::cout << "Enter CInsertion::Parse() \n";
+	CLogger::Log(__LINE__, __FILE__, "Enter Parse()");
 	std::ifstream input_file;
 	input_file.open(m_sFileToSort);
 
@@ -66,17 +65,17 @@ void CInsertion::Parse()
 
 	}
 	input_file.close();
-	std::cout << "Leave CInsertion::Parse() \n";
+	CLogger::Log(__LINE__, __FILE__, "Leave Parse()");
 }
 
 void CInsertion::WriteSortedListToFile(std::string filepath)
 {
-	std::cout << "Enter CInsertion::WriteSortedListToFile \n";
+	CLogger::Log(__LINE__, __FILE__, "Enter WriteSortedListToFile()");
 	std::ofstream sorted(filepath);
 
 	for (int i = 0; i < (int)listofnumbers.size(); ++i)
 	{
 		sorted << listofnumbers[i] << std::endl;
 	}
-	std::cout << "Leave CInsertion::WriteSortedListToFile \n";
+	CLogger::Log(__LINE__, __FILE__, "Leave WriteSortedListToFile()");
 }

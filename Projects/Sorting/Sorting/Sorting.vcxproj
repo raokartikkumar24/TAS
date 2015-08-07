@@ -74,6 +74,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -83,7 +84,9 @@
     <ClInclude Include="BubbleSort.h" />
     <ClInclude Include="DataSet.h" />
     <ClInclude Include="HeapSort.h" />
+    <ClInclude Include="HTMLFormat.h" />
     <ClInclude Include="Insertion.h" />
+    <ClInclude Include="Logger.h" />
     <ClInclude Include="MergeSort.h" />
     <ClInclude Include="QuickSort.h" />
     <ClInclude Include="SelectionSort.h" />
@@ -96,7 +99,9 @@
     <ClCompile Include="BubbleSort.cpp" />
     <ClCompile Include="DataSet.cpp" />
     <ClCompile Include="HeapSort.cpp" />
+    <ClCompile Include="HTMLFormat.cpp" />
     <ClCompile Include="Insertion.cpp" />
+    <ClCompile Include="Logger.cpp" />
     <ClCompile Include="MergeSort.cpp" />
     <ClCompile Include="QuickSort.cpp" />
     <ClCompile Include="SelectionSort.cpp" />
@@ -107,6 +112,9 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="WebServer.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="sort_time.html" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

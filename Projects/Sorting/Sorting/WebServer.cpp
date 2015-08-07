@@ -23,9 +23,8 @@ void CWebServer::start()
 	listeningSocket = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
 	if (listeningSocket == INVALID_SOCKET)
 	{
-		std::cout << "Could not create listening socket \n";
+		CLogger::Log(__LINE__, __FILE__, "Could not create listening socket ");
 		WSACleanup();
-		//return NETWORK_ERROR;
 
 	}
 
@@ -41,6 +40,7 @@ void CWebServer::start()
 	if (nret == SOCKET_ERROR)
 	{
 		std::cout << "could not bind listening socoket \n";
+		CLogger::Log(__LINE__, __FILE__, "Could not create listening socket ");
 		WSACleanup();
 	}
 
@@ -48,7 +48,7 @@ void CWebServer::start()
 	nret = listen(listeningSocket, 10); // 10 connections at a time?
 	if (nret == SOCKET_ERROR)
 	{
-		std::cout << "could not listen \n";
+		CLogger::Log(__LINE__, __FILE__, "could not listen");
 		WSACleanup();
 	}
 
@@ -59,11 +59,11 @@ void CWebServer::start()
 	commsocket = accept(listeningSocket, NULL, NULL);
 	if (commsocket == INVALID_SOCKET)
 	{
-		std::cout << "could not accept connection request \n";
+		CLogger::Log(__LINE__, __FILE__, "could not accept connection request");
 		WSACleanup();
 	}
 
-	char sendbuffer[256] = "Hi there!. This is server!";
+	char sendbuffer[256] = "Sorting Web Server";
 	char recvbuffer[1024];
 	do
 	{
@@ -73,18 +73,18 @@ void CWebServer::start()
 
 		if (nret == SOCKET_ERROR)
 		{
-			std::cout << "could not receive messgae \n";
+			CLogger::Log(__LINE__, __FILE__, "could not receive message ");
 			WSACleanup();
 		}
 		else
 		{
-			std::cout << "Received message from client :: " << recvbuffer << "\n";
+			CLogger::Log(__LINE__, __FILE__, recvbuffer);
 			char timings[25];
 			std::cin >> timings;
 			nret = send(commsocket, timings, strlen(timings), 0);
 			if (nret == SOCKET_ERROR)
 			{
-				std::cout << "could not send msg to cleint \n";
+				CLogger::Log(__LINE__, __FILE__, "could not send msg to cleint");
 				WSACleanup();
 			}
 		}

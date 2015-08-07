@@ -51,6 +51,12 @@
     <ClInclude Include="WebServer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="HTMLFormat.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Logger.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -86,5 +92,14 @@
     <ClCompile Include="WebServer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="HTMLFormat.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Logger.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="sort_time.html" />
   </ItemGroup>
 </Project>

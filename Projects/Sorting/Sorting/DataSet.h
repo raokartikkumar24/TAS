@@ -1,6 +1,7 @@
 #pragma once
 #include <fstream>
 #include <string>
+#include "Logger.h"
 class CDataSet
 {
 private:
@@ -10,24 +11,17 @@ private:
 	std::ofstream m_fLargeDataset;
 	std::ofstream m_fSmallDataset;
 
-	///*
-	//Write the sorted data to files
-	//*/
-	std::ofstream m_fsortedLargeDataset;
-	std::ofstream m_fsortedSmallDataset;
-
 	std::string m_sInputLocation;
-	std::string m_sOutputLocation;
+	std::string m_sLargeDatasetLocation;
 
 public:
 	CDataSet();
 	~CDataSet();
-	CDataSet(std::string);
+	CDataSet(std::string smalldataset, std::string largedataset);
 	void createRandomDatasetLarge();
 	void createRandomDatasetSmall();
 
-	std::string ReadFile();
-	std::string ReadOutputFile();
-	void WriteSortedFile();
+	std::string ReadFileSmall();
+	std::string ReadFileLarge();
 };
 
