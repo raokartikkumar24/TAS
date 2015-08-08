@@ -6,13 +6,13 @@ CSortManager::CSortManager(bool datasetsize) : largedataset(datasetsize)
 	if (datasetsize == false)
 	{
 
-		m_fSmallDataset.open("time_small.txt");
+		m_fSmallDataset.open("C:\\temp\\time_small.txt");
 		m_fSmallDataset << "Algorithm" << "\t" << "Time" << "\n";
 		m_fSmallDataset << "--------------------------- \n";
 	}
 	else
 	{
-		m_fLargeDataset.open("time_large.txt");
+		m_fLargeDataset.open("C:\\temp\\time_large.txt");
 		m_fLargeDataset << "Algorithm" << "\t" << "Time" << "\n";
 		m_fLargeDataset << "--------------------------- \n";
 	}
@@ -55,7 +55,7 @@ void CSortManager::BubbleSort(std::string inputfilepath)
 	}
 	catch (std::exception ex)
 	{
-
+		CLogger::Log(__LINE__, __FILE__, ex.what());
 	}
 		
 
@@ -87,7 +87,7 @@ void CSortManager::InsertionSort(std::string inputfilepath)
 	}
 	catch (std::exception ex)
 	{
-
+		CLogger::Log(__LINE__, __FILE__, ex.what());
 	}
 		
 }
@@ -119,7 +119,7 @@ void CSortManager::SelectionSort(std::string inputfilepath)
 	}
 	catch (std::exception ex)
 	{
-
+		CLogger::Log(__LINE__, __FILE__, ex.what());
 	}
 
 	
@@ -157,7 +157,7 @@ void CSortManager::HeapSort(std::string inputfilepath, bool large)
 	}
 	catch (std::exception ex)
 	{
-
+		CLogger::Log(__LINE__, __FILE__, ex.what());
 	}
 	
 }
@@ -188,7 +188,7 @@ void CSortManager::QuickSort(std::string inputfilepath)
 	}
 	catch (std::exception ex)
 	{
-		ex.what();
+		CLogger::Log(__LINE__, __FILE__, ex.what());
 	}
 	
 }
@@ -220,7 +220,7 @@ void CSortManager::MergeSort(std::string inputfilepath)
 	}
 	catch (std::exception ex)
 	{
-
+		CLogger::Log(__LINE__, __FILE__, ex.what());
 	}
 	
 
@@ -230,16 +230,20 @@ void CSortManager::MergeSort(std::string inputfilepath)
 void CSortManager::printTimingsSmall(std::string sorttype, double value)
 {
 		
-	if (m_fSmallDataset.is_open())
-		m_fSmallDataset << std::left << std::setw(8) << sorttype << "\t" << std::setw(6) << value << "\n";
+	if (m_fSmallDataset.is_open()) {
+		//m_fSmallDataset << std::left << std::setw(8) << sorttype << "\t" << std::setw(6) << value << "\n";
+		m_fSmallDataset << sorttype << " \t\t" << value << std::endl;
+	}
 	else
 		std::cout << "cannot open file \n";
 }
 
 void CSortManager::printTimingsLarge(std::string sorttype,double value)
 {
-	if (m_fLargeDataset.is_open())
-		m_fLargeDataset << std::left << std::setw(8) << sorttype << "\t" << std::setw(6) << value << "\n";
+	if (m_fLargeDataset.is_open()){
+		//m_fLargeDataset << std::left << std::setw(8) << sorttype << "\t" << std::setw(6) << value << "\n";
+		m_fLargeDataset << sorttype << "\t\t" << value << std::endl;
+	}
 	else
 		std::cout << "cannot open file \n";
 }
