@@ -13,7 +13,7 @@ CClient::~CClient()
 
 void CClient::TalkToServer()
 {
-	std::cout << "Stared client... \n";
+	std::cout << "Started client... \n";
 	WSADATA ws;
 	int nret;
 
